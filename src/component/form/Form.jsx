@@ -20,7 +20,6 @@ function TodoForm(props) {
     },
   }));
   const classes = useStyles();
-
   return (
     <div>
       <Card className={classes.cards}>
@@ -35,12 +34,12 @@ function TodoForm(props) {
           >
             <TodoInput
               handleChange={(event) => {
-                props.onChangehandleChange(event);
+                props.handleChange(event);
               }}
             />
             <DatePicker
               value={props.formState.date}
-              onChange={() => changeFormStates(props.formState.date)}
+              onChange={(value, e) => props.handleDateChange(value, e)}
             />
             <SubmitButton />
           </form>

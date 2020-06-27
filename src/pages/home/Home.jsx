@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
@@ -8,43 +8,86 @@ function Home() {
     title: "",
     date: new Date(),
     todoItem: [],
+    buttonStatus: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!props.formState.title == "") {
+    if (!formState.title == "") {
       let todo = {
         id: Math.random(),
-        todo: props.formState.title,
+        todo: formState.title,
         completed: false,
-        dates: props.formState.date.toLocaleDateString(),
+        dates: formState.date.toLocaleDateString(),
       };
-      props.changeFormStates({
-        ...props.formState,
-        todoItem: [...props.formState.todoItem, todo],
+      changeFormStates({
+        ...formState,
+        todoItem: [...formState.todoItem, todo],
       });
     }
-    changeFormStates({ ...props.formState, title: "" });
   };
 
-  const handleChange = (event) => {
-    changeFormStates({ ...props.formState, title: event.target.value });
+  const handleDeleteListItem = (id) => {
+    let todoItems = [...formState.todoItem];
+    todoItems.splice(id, 1);
+    changeFormStates({ ...formState, todoItem: todoItems });
   };
+
+  const handleChecked = (id) => {
+    let todoItems = formState.todoItem.map((val) => {
+      if (val.id === id) {
+        val.completed = !val.completed;
+      }
+      return val;
+    });
+    changeFormStates({ ...formState, todoItem: todoItems });
+  };
+
+  const handleDateChange = (value, e) => {
+    changeFormStates({ ...formState, date: value });
+  };
+  const handleChange = (event) => {
+    changeFormStates({ ...formState, title: event.target.value });
+  };
+  const handleClickCompleted = () => {
+    changeFormStates({ ...formState, buttonStatus: "completed" });
+  };
+  const handleClickActiveList = () => {
+    changeFormStates({ ...formState, buttonStatus: "activeList" });
+  };
+  const handleClickAll = () => {
+    changeFormStates({ ...formState, buttonStatus: "all" });
+  };
+  const handleAscSort = () => {
+    changeFormStates({ ...formState, buttonStatus: "asc" });
+  };
+  const handleDscSort = () => {
+    changeFormStates({ ...formState, buttonStatus: "dsc" });
+  };
+
   return (
     <div>
       <Navbar />
       <TodoForm
-        formState={(e) => {
-          formState(e);
-        }}
         handleChange={(event) => {
           handleChange(event);
         }}
         handleSubmit={(e) => {
           handleSubmit(e);
         }}
+        handleDateChange={(value, e) => handleDateChange(value, e)}
+        formState={formState}
       />
-      <TodoList formState={formState} />
+      <TodoList
+        formState={formState}
+        handleClickCompleted={handleClickCompleted}
+        handleClickActiveList={handleClickActiveList}
+        handleClickAll={handleClickAll}
+        handleAscSort={handleAscSort}
+        handleDscSort={handleDscSort}
+        handleChecked={(id) => handleChecked(id)}
+        handleDeleteListItem={(id) => handleDeleteListItem(id)}
+      />
     </div>
   );
 }

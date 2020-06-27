@@ -10,11 +10,11 @@ import {
   Card,
 } from "@material-ui/core";
 
-function CompletedTodoList(props) {
+function AllTodoList(props) {
   return (
     <div>
       {props.formStates.todoItem.map((val, key) => {
-        return val.completed === true ? (
+        return (
           <div style={{ backgroundColor: "#66a3ff", marginTop: "10px" }}>
             <AppBar position="static">
               <Toolbar>
@@ -43,9 +43,9 @@ function CompletedTodoList(props) {
               </Toolbar>
             </AppBar>
           </div>
-        ) : null;
+        );
       })}
     </div>
   );
 }
-export default CompletedTodoList;
+export default AllTodoList;

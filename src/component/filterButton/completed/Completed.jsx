@@ -1,10 +1,17 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 function CompletedButton(props) {
-
+  const useStyles = makeStyles((theme) => ({
+    boxs: {
+      display: "inline-block",
+    },
+  }));
+  const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.boxs}>
       <Button
         type="submit"
         size="small"
@@ -14,6 +21,7 @@ function CompletedButton(props) {
       >
         Completed
       </Button>
+      {""}
     </div>
   );
 }

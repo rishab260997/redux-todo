@@ -10,11 +10,11 @@ import {
   Card,
 } from "@material-ui/core";
 
-function CompletedTodoList(props) {
+function ActiveTodoList(props) {
   return (
     <div>
       {props.formStates.todoItem.map((val, key) => {
-        return val.completed === true ? (
+        return val.completed === false ? (
           <div style={{ backgroundColor: "#66a3ff", marginTop: "10px" }}>
             <AppBar position="static">
               <Toolbar>
@@ -37,7 +37,9 @@ function CompletedTodoList(props) {
                   {val.todo}
                 </Typography>
                 <Typography variant="h6"> {val.dates}</Typography>
-                <Button onClick={() => props.handleDeleteListItem(key)}>
+                <Button
+                  onClick={() => props.handleDeleteListItem(key)}
+                >
                   X
                 </Button>
               </Toolbar>
@@ -48,4 +50,4 @@ function CompletedTodoList(props) {
     </div>
   );
 }
-export default CompletedTodoList;
+export default ActiveTodoList;
