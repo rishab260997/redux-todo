@@ -1,9 +1,9 @@
-import React from 'react';
-import Navbar from '../../component/navbar/Navbar';
+import React from "react";
+import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
-import TodoList from '../../component/todoList/homeTodoList/HomeTodoList';
+import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
 
-function Home (){
+function Home() {
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -24,23 +24,29 @@ function Home (){
         todoItem: [...props.formState.todoItem, todo],
       });
     }
-    changeFormStates({...props.formState, title: ""});
+    changeFormStates({ ...props.formState, title: "" });
   };
 
   const handleChange = (event) => {
     changeFormStates({ ...props.formState, title: event.target.value });
   };
-    return(
-      <div>
-       <Navbar />
-       <TodoForm 
-          formState={(e) => {formState(e)}}
-          handleChange={(event) => { handleChange(event)}}
-          handleSubmit={(e) =>{handleSubmit(e)}} 
-          />
-       <TodoList formState={formState}/>
-      </div>
-    )
+  return (
+    <div>
+      <Navbar />
+      <TodoForm
+        formState={(e) => {
+          formState(e);
+        }}
+        handleChange={(event) => {
+          handleChange(event);
+        }}
+        handleSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      />
+      <TodoList formState={formState} />
+    </div>
+  );
 }
 
 export default Home;
