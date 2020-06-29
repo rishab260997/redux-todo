@@ -1,11 +1,8 @@
 import React from "react";
-import { Button} from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-
-function DscButton(props) {
-
-
+function FilterButton(props) {
   const useStyles = makeStyles((theme) => ({
     boxs: {
       display: "inline-block",
@@ -20,11 +17,12 @@ function DscButton(props) {
         size="small"
         variant="contained"
         color="primary"
-        onClick={() => props.handleDscSort()}
+        onClick={() => props.handleClickAll()}
       >
-        DscList
-      </Button>{''}
+        {props.ButtonTypes}
+      </Button>
+      {""}
     </div>
   );
 }
-export default DscButton;
+export default FilterButton;
