@@ -48,6 +48,7 @@ function useTodoFormAction(title, date, todoItem, buttonStatus) {
   };
   const handleClickCompleted = () => {
     changeFormStates({ ...formState, buttonStatus: "completed" });
+    
   };
   const handleClickActiveList = () => {
     changeFormStates({ ...formState, buttonStatus: "activeList" });
