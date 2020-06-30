@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 
-function useTodoFormAction(title,date,todoItem,buttonStatus) {
+function useTodoFormAction(title, date, todoItem, buttonStatus) {
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -61,7 +61,7 @@ function useTodoFormAction(title,date,todoItem,buttonStatus) {
   const handleDscSort = () => {
     changeFormStates({ ...formState, buttonStatus: "dsc" });
   };
-  return{
+  return {
     formState,
     handleSubmit,
     handleDeleteListItem,
@@ -72,8 +72,8 @@ function useTodoFormAction(title,date,todoItem,buttonStatus) {
     handleClickActiveList,
     handleClickAll,
     handleAscSort,
-    handleDscSort
-  }
+    handleDscSort,
+  };
 }
 
 export default useTodoFormAction;

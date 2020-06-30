@@ -2,31 +2,27 @@ import React, { useState } from "react";
 import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
-import useTodoFormAction from  '../../customHook/CustomHook';
+import useTodoFormAction from "../../customHook/CustomHook";
 
 function Home() {
-
-
   const {
-    formState : formState,
-    handleSubmit : handleSubmit,
-    handleDeleteListItem : handleDeleteListItem,
-    handleChecked : handleChecked,
-    handleDateChange : handleDateChange,
-    handleChange :handleChange,
-    handleClickCompleted :handleClickCompleted,
-    handleClickActiveList : handleClickActiveList,
-    handleClickAll : handleClickAll,
-    handleAscSort :handleAscSort,
-    handleDscSort : handleDscSort
-  }
-   = useTodoFormAction({
+    formState: formState,
+    handleSubmit: handleSubmit,
+    handleDeleteListItem: handleDeleteListItem,
+    handleChecked: handleChecked,
+    handleDateChange: handleDateChange,
+    handleChange: handleChange,
+    handleClickCompleted: handleClickCompleted,
+    handleClickActiveList: handleClickActiveList,
+    handleClickAll: handleClickAll,
+    handleAscSort: handleAscSort,
+    handleDscSort: handleDscSort,
+  } = useTodoFormAction({
     title: "",
     date: new Date(),
     todoItem: [],
     buttonStatus: "",
   });
-
 
   return (
     <div>
