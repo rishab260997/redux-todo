@@ -16,7 +16,7 @@ function FilterButton(props) {
         type="submit"
         size="small"
         variant="contained"
-        color="primary"
+        color={props.colors}
         onClick={() => props.handleClickAll()}
       >
         {props.ButtonTypes}

@@ -1,4 +1,5 @@
 import React from "react";
+import FilterButton from '../../filterButton/AllButton';
 import {
   Button,
   Checkbox,
@@ -49,15 +50,11 @@ function FilterDate(props) {
                   <Typography variant="h6"> {val.dates}</Typography>
                 </TableCell>
                 <TableCell align="right">
-                  <Button
-                    onClick={() => props.handleDeleteListItem(val.id)}
-                    type="submit"
-                    size="small"
-                    variant="contained"
-                    color="secondary"
-                  >
-                    Delete
-                  </Button>
+                  <FilterButton
+                   handleClickAll={() => props.handleDeleteListItem(val.id)}
+                    ButtonTypes={"Delete"}
+                    colors = {"secondary"}
+                  />
                 </TableCell>
               </TableRow>
             </Table>

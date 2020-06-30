@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import TodoInput from "../inputBox/InpputBox";
-import SubmitButton from "../submitButton/SubmitButton";
-import { CardContent, Card } from "@material-ui/core";
+import { CardContent, Card,Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DatePicker from "react-date-picker";
 
@@ -41,7 +40,7 @@ function TodoForm(props) {
               value={props.formState.date}
               onChange={(value, e) => props.handleDateChange(value, e)}
             />
-            <SubmitButton />
+            <Button variant="contained" color="secondary" type="submit" value="Submit"> Submit</Button>
           </form>
         </CardContent>
       </Card>
