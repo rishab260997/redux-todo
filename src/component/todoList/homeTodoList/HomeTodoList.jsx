@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ActiveTodoList from "../activeTodoList/ActiveTodoList";
 import FilterButton from "../../filterButton/AllButton";
 import { makeStyles } from "@material-ui/core/styles";
+import FilterDate from "../filterData/FilterData";
 
 function TodoList(props) {
   const useStyles = makeStyles((theme) => ({
@@ -15,7 +15,7 @@ function TodoList(props) {
   const classes = useStyles();
   return (
     <div className={classes.todolistItems}>
-      <ActiveTodoList
+      <FilterDate
         formState={props.formState}
         handleChecked={(id) => props.handleChecked(id)}
         handleDeleteListItem={(id) => props.handleDeleteListItem(id)}

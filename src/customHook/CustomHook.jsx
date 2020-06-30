@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function useTodoFormAction(title, date, todoItem, buttonStatus) {
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
     todoItem: [],
+    showTodoItem: [],
     buttonStatus: "",
   });
+
+  useEffect(() => {
+    changeFormStates({ ...formState, showTodoItem: formState.todoItem });
+  }, [formState.todoItem]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,19 +53,46 @@ function useTodoFormAction(title, date, todoItem, buttonStatus) {
   };
   const handleClickCompleted = () => {
     changeFormStates({ ...formState, buttonStatus: "completed" });
-    
+    var completeds = formState.todoItem.filter((val) => val.completed === true);
+    changeFormStates({ ...formState, showTodoItem: completeds });
   };
   const handleClickActiveList = () => {
     changeFormStates({ ...formState, buttonStatus: "activeList" });
+    var completeds = formState.todoItem.filter(
+      (val) => val.completed === false
+    );
+    changeFormStates({ ...formState, showTodoItem: completeds });
   };
+
   const handleClickAll = () => {
     changeFormStates({ ...formState, buttonStatus: "all" });
+    var completeds = formState.todoItem.filter((val) => val);
+    changeFormStates({ ...formState, showTodoItem: completeds });
   };
+
   const handleAscSort = () => {
     changeFormStates({ ...formState, buttonStatus: "asc" });
+
+    var completeds = formState.todoItem
+      .sort(
+        (a, b) =>
+          Date.parse(new Date(a.dates.split("/").reverse().join("-"))) -
+          Date.parse(new Date(b.dates.split("/").reverse().join("-")))
+      )
+      .filter((val) => val);
+    changeFormStates({ ...formState, showTodoItem: completeds });
   };
+
   const handleDscSort = () => {
     changeFormStates({ ...formState, buttonStatus: "dsc" });
+    var completeds = formState.todoItem
+      .sort(
+        (a, b) =>
+          Date.parse(new Date(b.dates.split("/").reverse().join("-"))) -
+          Date.parse(new Date(a.dates.split("/").reverse().join("-")))
+      )
+      .filter((val) => val);
+    changeFormStates({ ...formState, showTodoItem: completeds });
   };
   return {
     formState,

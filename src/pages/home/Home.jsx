@@ -4,7 +4,7 @@ import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
 import useTodoFormAction from "../../customHook/CustomHook";
 
-function Home() {
+function Home(props) {
   const {
     formState: formState,
     handleSubmit: handleSubmit,
