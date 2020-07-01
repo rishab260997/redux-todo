@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
-import useTodoFormAction from "../../customHook/CustomHook";
+import useTodoFormAction from "../../customHook/UseTodoFormAction";
+import { withRouter, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {addTodos } from '../../redux/action/index';
+
 
 function Home(props) {
   const {
@@ -22,8 +26,11 @@ function Home(props) {
     date: new Date(),
     todoItem: [],
     buttonStatus: "",
+    onSubmit :  () => {}
   });
 
+
+  
   return (
     <div>
       <Navbar />
@@ -51,4 +58,28 @@ function Home(props) {
   );
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+     
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  addTodos: data => dispatch(addTodos(data))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+
+// const mapStateToProps = (state) => {
+//   return {
+//     todoReducer: state.todoReducer
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   addTodos: data => dispatch(addTodos(data)),
+// });
+
+// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
+
+// export default Home;

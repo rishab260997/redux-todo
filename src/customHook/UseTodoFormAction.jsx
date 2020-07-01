@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+// import { addTodos } from "../redux/action/index";
 
-function useTodoFormAction(title, date, todoItem, buttonStatus) {
+function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
+  console.log(title, date, todoItem, buttonStatus, onSubmit,"dattttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -26,6 +28,8 @@ function useTodoFormAction(title, date, todoItem, buttonStatus) {
         ...formState,
         todoItem: [...formState.todoItem, todo],
       });
+      // props.addTodos(todo)
+      onSubmit();
     }
   };
 
@@ -108,5 +112,6 @@ function useTodoFormAction(title, date, todoItem, buttonStatus) {
     handleDscSort,
   };
 }
+
 
 export default useTodoFormAction;
