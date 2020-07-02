@@ -12,8 +12,10 @@ function useTodoFormAction({
   deletedListItems,
   handleCheckedDispatch,
   checkedListItems,
+  handleAllDispatch,
+  allTodosList
 }) {
-  console.log(checkedListItems, "ttttttt");
+  console.log(handleAllDispatch,allTodosList, "ttttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -46,8 +48,8 @@ function useTodoFormAction({
   const handleDeleteListItem = (id) => {
     // let todoItems = [...formState.todoItem];
     // todoItems.splice(id, 1);
-    // changeFormStates({ ...formState, todoItem: todoItems });
     handleDeleteList(formState.showTodoItem, id);
+    changeFormStates({ ...formState, todoItem: deletedListItems });
   };
 
   const handleChecked = (id) => {
@@ -82,8 +84,9 @@ function useTodoFormAction({
 
   const handleClickAll = () => {
     changeFormStates({ ...formState, buttonStatus: "all" });
-    var completeds = formState.todoItem.filter((val) => val);
-    changeFormStates({ ...formState, showTodoItem: completeds });
+    // var completeds = formState.todoItem.filter((val) => val);
+    handleAllDispatch(formState.todoItem)
+    changeFormStates({ ...formState, showTodoItem: allTodosList });
   };
 
   const handleAscSort = () => {
