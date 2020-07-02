@@ -26,7 +26,7 @@ function Home(props) {
     date: new Date(),
     todoItem: [],
     buttonStatus: "",
-    onSubmit :  () => {}
+    onSubmit :  (todo) => {props.addTodos(todo)}
   });
 
 

@@ -4,9 +4,7 @@ import { CardContent, Card,Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import DatePicker from "react-date-picker";
 
-function TodoForm(props) {
-  console.log(props,"dddddddddddddddddd");
-  
+function TodoForm(props) {  
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {

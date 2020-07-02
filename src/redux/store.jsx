@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from "redux";
 import todoReducer from "./reducer/reducer";
-import mySaga from "./saga/addTodoSaga";
+import watchAllSaga from "./saga/combineSaga";
 import createSagaMiddleware from "redux-saga";
 const sagaMiddleware = createSagaMiddleware();
 const middleWare = [];
@@ -13,6 +13,6 @@ const store = createStore(
   // applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(watchAllSaga);
 
 export default store;

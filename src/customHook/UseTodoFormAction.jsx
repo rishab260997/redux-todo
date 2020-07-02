@@ -29,7 +29,7 @@ function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
         todoItem: [...formState.todoItem, todo],
       });
       // props.addTodos(todo)
-      onSubmit();
+      onSubmit(todo)
     }
   };
 
