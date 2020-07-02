@@ -9,9 +9,11 @@ function useTodoFormAction({
   onSubmit,
   todoListItems,
   handleDeleteList,
-  deletedListItems
+  deletedListItems,
+  handleCheckedDispatch,
+  checkedListItems,
 }) {
-  console.log(deletedListItems, "ttttttt");
+  console.log(checkedListItems, "ttttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -20,14 +22,13 @@ function useTodoFormAction({
     buttonStatus: "",
   });
 
+  useEffect(() => {
+    changeFormStates({ ...formState, showTodoItem: todoListItems });
+  }, [formState.todoItem]);
 
   useEffect(() => {
-    changeFormStates({ ...formState, showTodoItem: todoListItems});
-  },[formState.todoItem]);
-
-  useEffect(() =>{
-    changeFormStates({...formState, todoItem: todoListItems })
-  },[todoListItems])
+    changeFormStates({ ...formState, todoItem: todoListItems });
+  }, [todoListItems]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,21 +44,21 @@ function useTodoFormAction({
   };
 
   const handleDeleteListItem = (id) => {
-   
     // let todoItems = [...formState.todoItem];
     // todoItems.splice(id, 1);
     // changeFormStates({ ...formState, todoItem: todoItems });
-    handleDeleteList(formState.showTodoItem,id);
+    handleDeleteList(formState.showTodoItem, id);
   };
 
   const handleChecked = (id) => {
-    let todoItems = formState.todoItem.map((val) => {
-      if (val.id === id) {
-        val.completed = !val.completed;
-      }
-      return val;
-    });
-    changeFormStates({ ...formState, todoItem: todoItems });
+    // let todoItems = formState.todoItem.map((val) => {
+    //   if (val.id === id) {
+    //     val.completed = !val.completed;
+    //   }
+    //   return val;
+    // });
+    handleCheckedDispatch(formState.showTodoItem, id);
+    changeFormStates({ ...formState, todoItem: checkedListItems });
   };
 
   const handleDateChange = (value, e) => {

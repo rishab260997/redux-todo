@@ -5,7 +5,7 @@ import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
 import useTodoFormAction from "../../customHook/UseTodoFormAction";
 import { withRouter, Link } from "react-router-dom";
 import { connect, useSelector, useDispatch } from "react-redux";
-import { addTodos, deleteTodos } from "../../redux/action/index";
+import { addTodos, deleteTodos,checkTodos } from "../../redux/action/index";
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -33,7 +33,10 @@ function Home(props) {
     handleDeleteList: (showTodoItem, id) => {
       dispatch(deleteTodos({ showTodoItem, id }));
     },
-    deletedListItems: useSelector((state) => state),
+    deletedListItems: useSelector((state) => state.DeleteReducerStatus),
+    handleCheckedDispatch: (showTodoItem, id) =>{dispatch(checkTodos({ showTodoItem ,id }));
+  },
+  checkedListItems: useSelector((state)=> state.CheckedReducerStatus)
   });
 
   return (

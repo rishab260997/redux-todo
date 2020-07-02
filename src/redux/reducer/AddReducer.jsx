@@ -1,11 +1,5 @@
 import * as constant from "../actionType/actionType";
 
-// const initialState = {
-//   id: null,
-//   todo: "",
-//   completed: false,
-//   dates: "",
-// };
 
 let todoList = [];
 function addReducer(todoList = [], action) {
