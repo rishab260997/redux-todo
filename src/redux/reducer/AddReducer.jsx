@@ -6,8 +6,8 @@ import * as constant from "../actionType/actionType";
 //   completed: false,
 //   dates: "",
 // };
- 
-let todoList =[];
+
+let todoList = [];
 function addReducer(todoList = [], action) {
   if (action.type === constant.ADD_TODO) {
     return [
@@ -19,8 +19,8 @@ function addReducer(todoList = [], action) {
         dates: action.payload.dates,
       },
     ];
-  }else{
-    return todoList
+  } else {
+    return todoList;
   }
 }
 export default addReducer;

@@ -11,14 +11,11 @@ import {
   Paper,
 } from "@material-ui/core";
 
-function FilterDate(props) {
-  console.log(props.formState, "dddddddddddd");
-
- 
+function FilterDate(props) { 
   return (
     <div>
       {  props.formState.showTodoItem != 0 ?
-         props.formState.showTodoItem.AddReducerstatus.map((val, key) => {
+         props.formState.showTodoItem.map((val, key) => {
             return (
               <TableContainer component={Paper}>
                 <Table size="small" aria-label="a dense table">

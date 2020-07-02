@@ -8,8 +8,10 @@ function useTodoFormAction({
   buttonStatus,
   onSubmit,
   todoListItems,
+  handleDeleteList,
+  deletedListItems
 }) {
-  console.log(todoListItems, "ttttttt");
+  console.log(deletedListItems, "ttttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -18,7 +20,6 @@ function useTodoFormAction({
     buttonStatus: "",
   });
 
-  console.log(formState.showTodoItem, "ppppppppppppp");
 
   useEffect(() => {
     changeFormStates({ ...formState, showTodoItem: todoListItems});
@@ -42,9 +43,11 @@ function useTodoFormAction({
   };
 
   const handleDeleteListItem = (id) => {
-    let todoItems = [...formState.todoItem];
-    todoItems.splice(id, 1);
-    changeFormStates({ ...formState, todoItem: todoItems });
+   
+    // let todoItems = [...formState.todoItem];
+    // todoItems.splice(id, 1);
+    // changeFormStates({ ...formState, todoItem: todoItems });
+    handleDeleteList(formState.showTodoItem,id);
   };
 
   const handleChecked = (id) => {
