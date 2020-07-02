@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
 // import { addTodos } from "../redux/action/index";
 
-function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
-  console.log(title, date, todoItem, buttonStatus, onSubmit,"dattttttt");
+function useTodoFormAction({
+  title,
+  date,
+  todoItem,
+  buttonStatus,
+  onSubmit,
+  todoListItems,
+}) {
+  console.log(todoListItems, "ttttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -11,9 +18,15 @@ function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
     buttonStatus: "",
   });
 
+  console.log(formState, "ppppppppppppp");
+
   useEffect(() => {
-    changeFormStates({ ...formState, showTodoItem: formState.todoItem });
-  }, [formState.todoItem]);
+    changeFormStates({ ...formState, showTodoItem: todoListItems});
+  },[formState.todoItem]);
+
+  useEffect(() =>{
+    changeFormStates({...formState, todoItem: todoListItems })
+  },[todoListItems])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,12 +37,7 @@ function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
         completed: false,
         dates: formState.date.toLocaleDateString(),
       };
-      changeFormStates({
-        ...formState,
-        todoItem: [...formState.todoItem, todo],
-      });
-      // props.addTodos(todo)
-      onSubmit(todo)
+      onSubmit(todo);
     }
   };
 
@@ -112,6 +120,5 @@ function useTodoFormAction({title, date, todoItem, buttonStatus, onSubmit}) {
     handleDscSort,
   };
 }
-
 
 export default useTodoFormAction;

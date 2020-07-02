@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
 import useTodoFormAction from "../../customHook/UseTodoFormAction";
 import { withRouter, Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect ,useSelector,useDispatch} from "react-redux";
 import {addTodos } from '../../redux/action/index';
 
 
 function Home(props) {
+  const dispatch = useDispatch();
   const {
     formState: formState,
     handleSubmit: handleSubmit,
@@ -26,11 +27,11 @@ function Home(props) {
     date: new Date(),
     todoItem: [],
     buttonStatus: "",
-    onSubmit :  (todo) => {props.addTodos(todo)}
+    onSubmit :  (todo) => {dispatch(addTodos(todo))},
+    todoListItems: useSelector( state => state)
   });
 
 
-  
   return (
     <div>
       <Navbar />
@@ -58,28 +59,6 @@ function Home(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-     
-  };
-};
 
-const mapDispatchToProps = (dispatch) => ({
-  addTodos: data => dispatch(addTodos(data))
-});
+export default Home;
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
-
-// const mapStateToProps = (state) => {
-//   return {
-//     todoReducer: state.todoReducer
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   addTodos: data => dispatch(addTodos(data)),
-// });
-
-// export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));
-
-// export default Home;

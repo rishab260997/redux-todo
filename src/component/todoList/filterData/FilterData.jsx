@@ -1,5 +1,5 @@
 import React from "react";
-import FilterButton from '../../filterButton/AllButton';
+import FilterButton from "../../filterButton/AllButton";
 import {
   Button,
   Checkbox,
@@ -12,6 +12,8 @@ import {
 } from "@material-ui/core";
 
 function FilterDate(props) {
+  console.log(props.formState, "dattttttt");
+
   return (
     <div>
       {props.formState.showTodoItem.map((val, key) => {
@@ -51,9 +53,9 @@ function FilterDate(props) {
                 </TableCell>
                 <TableCell align="right">
                   <FilterButton
-                   handleClickAll={() => props.handleDeleteListItem(val.id)}
+                    handleClickAll={() => props.handleDeleteListItem(val.id)}
                     ButtonTypes={"Delete"}
-                    colors = {"secondary"}
+                    colors={"secondary"}
                   />
                 </TableCell>
               </TableRow>

@@ -14,7 +14,7 @@ export function* AddTodoSaga(action) {
     //   id: data.id
     // })
     // )
-    if (data.error === 0) {
+    if (data === 0) {
       yield put(addTodos({ response: data }));
     } 
 }

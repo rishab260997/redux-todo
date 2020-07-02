@@ -24,27 +24,27 @@ function TodoList(props) {
         <FilterButton
           ButtonTypes={"All List"}
           handleClickAll={props.handleClickAll}
-          colors = {"primary"}
+          colors={"primary"}
         />
         <FilterButton
           ButtonTypes={"Completed"}
           handleClickAll={props.handleClickCompleted}
-          colors = {"primary"}
+          colors={"primary"}
         />
         <FilterButton
           ButtonTypes={"ActiveList"}
           handleClickAll={props.handleClickActiveList}
-          colors = {"primary"}
+          colors={"primary"}
         />
         <FilterButton
           ButtonTypes={"Asc"}
           handleClickAll={props.handleAscSort}
-          colors = {"primary"}
+          colors={"primary"}
         />
         <FilterButton
           ButtonTypes={"Dsc"}
           handleClickAll={props.handleDscSort}
-          colors = {"primary"}
+          colors={"primary"}
         />
       </div>
     </div>
