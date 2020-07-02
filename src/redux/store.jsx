@@ -1,14 +1,14 @@
 import { applyMiddleware, createStore } from "redux";
-import todoReducer from "./reducer/reducer";
 import watchAllSaga from "./saga/combineSaga";
 import createSagaMiddleware from "redux-saga";
+import rootReducer from "./reducer/CombineReducer";
 const sagaMiddleware = createSagaMiddleware();
 const middleWare = [];
 
 
 middleWare.push(sagaMiddleware);
 const store = createStore(
-    todoReducer,
+  rootReducer,
   applyMiddleware(...middleWare)
   // applyMiddleware(sagaMiddleware)
 );

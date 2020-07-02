@@ -1,14 +1,14 @@
 import * as constant from "../actionType/actionType";
 
-const initialState = [{
-  id: null,
-  todo: "",
-  completed: false,
-  dates: "",
-}];
+// const initialState = {
+//   id: null,
+//   todo: "",
+//   completed: false,
+//   dates: "",
+// };
  
 let todoList =[];
-export function todoReducer(todoList = initialState, action) {
+function addReducer(todoList = [], action) {
   if (action.type === constant.ADD_TODO) {
     return [
       ...todoList,
@@ -19,6 +19,8 @@ export function todoReducer(todoList = initialState, action) {
         dates: action.payload.dates,
       },
     ];
+  }else{
+    return todoList
   }
 }
-export default todoReducer;
+export default addReducer;

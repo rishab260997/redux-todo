@@ -18,7 +18,7 @@ function useTodoFormAction({
     buttonStatus: "",
   });
 
-  console.log(formState, "ppppppppppppp");
+  console.log(formState.showTodoItem, "ppppppppppppp");
 
   useEffect(() => {
     changeFormStates({ ...formState, showTodoItem: todoListItems});
