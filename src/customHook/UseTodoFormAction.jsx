@@ -13,9 +13,8 @@ function useTodoFormAction({
   handleCheckedDispatch,
   checkedListItems,
   handleAllDispatch,
-  allTodosList
+  filterTodosList
 }) {
-  console.log(handleAllDispatch,allTodosList, "ttttttt");
   const [formState, changeFormStates] = useState({
     title: "",
     date: new Date(),
@@ -27,6 +26,7 @@ function useTodoFormAction({
   useEffect(() => {
     changeFormStates({ ...formState, showTodoItem: todoListItems });
   }, [formState.todoItem]);
+  console.log(formState.showTodoItem,filterTodosList, "ttttttt");
 
   useEffect(() => {
     changeFormStates({ ...formState, todoItem: todoListItems });
@@ -42,6 +42,7 @@ function useTodoFormAction({
         dates: formState.date.toLocaleDateString(),
       };
       onSubmit(todo);
+      // changeFormStates({ ...formState, todoItem: todoListItems });
     }
   };
 
@@ -49,7 +50,7 @@ function useTodoFormAction({
     // let todoItems = [...formState.todoItem];
     // todoItems.splice(id, 1);
     handleDeleteList(formState.showTodoItem, id);
-    changeFormStates({ ...formState, todoItem: deletedListItems });
+    // changeFormStates({ ...formState, todoItem: deletedListItems });
   };
 
   const handleChecked = (id) => {
@@ -86,7 +87,7 @@ function useTodoFormAction({
     changeFormStates({ ...formState, buttonStatus: "all" });
     // var completeds = formState.todoItem.filter((val) => val);
     handleAllDispatch(formState.todoItem)
-    changeFormStates({ ...formState, showTodoItem: allTodosList });
+    changeFormStates({ ...formState, showTodoItem: filterTodosList });
   };
 
   const handleAscSort = () => {

@@ -10,7 +10,7 @@ function* watchAllSaga() {
       fork(addTodoRequest),
       fork(deleteTodoRequest),
       fork(checkTodoRequest),
-      fork(allTodoRequest)
+      // fork(allTodoRequest)
     ]);
   }
 }

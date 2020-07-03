@@ -1,14 +1,12 @@
 import { combineReducers } from "redux";
 import addReducer from "./AddReducer";
-import deleteReducer from "./DeleteReducer";
-import checkedReducer from './checkedReducer';
-import allTodoReducer from './AllTodoReducer';
+import filterTodoReducer from './FilterTodoReducer';
 
 const rootReducer = combineReducers({
   AddReducerstatus: addReducer,
-  DeleteReducerStatus: deleteReducer,
-  CheckedReducerStatus: checkedReducer,
-  AllTodoReducerStatus: allTodoReducer
+  FilterTodoReducerStatus: filterTodoReducer,
+  // CheckedReducerStatus: checkedReducer,
+  // AllTodoReducerStatus: allTodoReducer
 });
 
 export default rootReducer;
