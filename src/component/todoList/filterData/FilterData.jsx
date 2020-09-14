@@ -1,7 +1,6 @@
 import React from "react";
 import FilterButton from "../../filterButton/AllButton";
 import {
-  Button,
   Checkbox,
   Typography,
   Table,
@@ -14,7 +13,7 @@ import {
 function FilterDate(props) { 
   return (
     <div>
-      {  props.formState.showTodoItem != 0 ?
+      {  props.formState.showTodoItem !== 0 ?
          props.formState.showTodoItem.map((val, key) => {
             return (
               <TableContainer component={Paper}>
@@ -41,7 +40,7 @@ function FilterDate(props) {
                         variant="h6"
                         style={{
                           textDecoration:
-                            val.completed == true ? "line-through" : "",
+                            val.completed === true ? "line-through" : "",
                         }}
                       >
                         {val.todo}

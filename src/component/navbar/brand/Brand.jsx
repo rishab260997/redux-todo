@@ -6,7 +6,7 @@ function Brand() {
     <div>
       <AppBar position="static">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit">
+          <Typography variant="h4" color="inherit">
             Todo-App
           </Typography>
         </Toolbar>

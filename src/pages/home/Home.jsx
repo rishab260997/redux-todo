@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "../../component/navbar/Navbar";
 import TodoForm from "../../component/form/Form";
 import TodoList from "../../component/todoList/homeTodoList/HomeTodoList";
 import useTodoFormAction from "../../customHook/UseTodoFormAction";
-import { withRouter, Link } from "react-router-dom";
-import { connect, useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addTodos, deleteTodos, checkTodos, allTodos } from "../../redux/action/index";
 
 function Home(props) {

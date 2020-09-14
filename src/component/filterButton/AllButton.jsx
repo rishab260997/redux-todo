@@ -6,6 +6,7 @@ function FilterButton(props) {
   const useStyles = makeStyles((theme) => ({
     boxs: {
       display: "inline-block",
+      padding: "10px",
     },
   }));
   const classes = useStyles();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FilterButton from "../../filterButton/AllButton";
 import { makeStyles } from "@material-ui/core/styles";
 import FilterDate from "../filterData/FilterData";
@@ -30,20 +30,10 @@ function TodoList(props) {
           ButtonTypes={"Completed"}
           handleClickAll={props.handleClickCompleted}
           colors={"primary"}
-        />
+        /> 
         <FilterButton
           ButtonTypes={"ActiveList"}
           handleClickAll={props.handleClickActiveList}
-          colors={"primary"}
-        />
-        <FilterButton
-          ButtonTypes={"Asc"}
-          handleClickAll={props.handleAscSort}
-          colors={"primary"}
-        />
-        <FilterButton
-          ButtonTypes={"Dsc"}
-          handleClickAll={props.handleDscSort}
           colors={"primary"}
         />
       </div>

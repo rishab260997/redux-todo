@@ -3,6 +3,7 @@ import * as constant from "../actionType/actionType";
 
 let todoList = [];
 function addReducer(todoList = [], action) {
+  console.log(action,"errr")
   if (action.type === constant.ADD_TODO) {
     return [
       ...todoList,
